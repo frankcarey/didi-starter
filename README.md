@@ -1,8 +1,28 @@
 Creates a docker based starter kit for those working on the Didi challenge.
 
+Requirements
+---------
+### ahoy (v2)
+
+To install on linux use:
+`sudo wget -q https://github.com/ahoy-cli/ahoy/releases/download/2.0.0-beta1/ahoy-bin-`uname -s`-amd64 -O /usr/local/bin/ahoy && sudo chown $USER /usr/local/bin/ahoy && chmod +x /usr/local/bin/ahoy`
+
+try typing `ahoy` in your command line and you should see `ahoy - Creates a configurable cli app for running commands.'
+
+### nvidia-docker
+Follow instructions here: https://github.com/NVIDIA/nvidia-docker#ubuntu-distributions and make sure you have your nvidia drivers and docker installed first.
+
+### docker and docker-compose
+
+Best way is to use their repository for ubuntu: https://docs.docker.com/engine/installation/linux/ubuntu/#install-docker
+
+
+Also, You'll want to setup a docker group with the right privilages so you don't have to type sudo every time.
+https://docs.docker.com/engine/installation/linux/linux-postinstall/
+
 
 Issues encountered
-=============
+-------
 
 need to run our custom Dockerfile to create ros:nvidia and then run that with ahoy desktop.
 
