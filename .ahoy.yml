@@ -14,5 +14,16 @@ commands:
       bash -c "roscore & rosrun rviz rviz"
       #bash
 
+  rosbag:
+    usage: Start the rosbag gui
+    cmd: | 
+      nvidia-docker run -it --rm \
+      --volume=/dev/dri \
+      --env="DISPLAY"  \
+      --env="QT_X11_NO_MITSHM=1" \
+      --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+      --volume="./data:/didi-data" \
+      ros:nvidia \
+      bash -c "roscore & rqt_bag"
       
 
