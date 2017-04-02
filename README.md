@@ -1,5 +1,7 @@
 Creates a docker based starter kit for those working on the Didi challenge.
 
+For now, it makes assumptions that you are running on ubuntu (16.04) and have an nvidia GPU installed and working.
+
 Requirements
 ---------
 ### ahoy (v2)
