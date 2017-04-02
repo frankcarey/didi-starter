@@ -1,9 +1,9 @@
 ahoyapi: v2
 commands:
-  build-desktop:
+  build-gui:
     cmd: docker build -t ros:nvidia .
-  desktop:
-    usage: Start the full ros desktop
+  ros:
+    usage: Run the full ROS desktop container with gpu and GUI support
     cmd: | 
       nvidia-docker run -it --rm \
       --volume=/dev/dri \
@@ -11,19 +11,12 @@ commands:
       --env="QT_X11_NO_MITSHM=1" \
       --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
       ros:nvidia \
-      bash -c "roscore & rosrun rviz rviz"
-      #bash
-
-  rosbag:
-    usage: Start the rosbag gui
-    cmd: | 
-      nvidia-docker run -it --rm \
-      --volume=/dev/dri \
-      --env="DISPLAY"  \
-      --env="QT_X11_NO_MITSHM=1" \
-      --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-      --volume="./data:/didi-data" \
-      ros:nvidia \
-      bash -c "roscore & rqt_bag"
+      bash -c "$@"
+  rviz:
+    usage: ROS visualization tool
+    cmd: ahoy ros "roscore & rosrun rviz rviz"
+  rqt_bag:
+    usage: ROS bag visualizer
+    cmd: ahoy ros "roscore & rqt_bag"
       
 
