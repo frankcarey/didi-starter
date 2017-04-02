@@ -20,6 +20,16 @@ Best way is to use their repository for ubuntu: https://docs.docker.com/engine/i
 Also, You'll want to setup a docker group with the right privilages so you don't have to type sudo every time.
 https://docs.docker.com/engine/installation/linux/linux-postinstall/
 
+### didi challenge data
+
+Download the `Didi-Training-Release-1.tar.gz` dataset and extract it into the ./data subfolder. (don't commit anything in that folder into the repo please) You can also delete the data folder and replace it with a symlink if you need to, just don't commit that change.
+
+
+Running things with ahoy
+===========
+
+Running `ahoy` anywhere within this folder should show you the commands we've got working so far. The commands come from the .ahoy.yml file. Feel free to add more commands as needed.
+
 
 Issues encountered
 -------
