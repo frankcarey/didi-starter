@@ -1,0 +1,7 @@
+version: '2'
+services:
+  master:
+    image: ros:indigo-ros-base
+    container_name: master
+    command:
+      - roscore
