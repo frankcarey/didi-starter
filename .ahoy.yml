@@ -4,7 +4,7 @@ commands:
     usage: Build the ros:nvidia docker image that 'ahoy ros' uses.
     cmd: docker build -t ros:nvidia .
   ros:
-    usage: Run the full ROS desktop container with gpu and GUI support
+    usage: Run a command in a ros gpu and GUI support
     cmd: | 
       nvidia-docker run -it --rm \
       --volume=/dev/dri \
@@ -37,4 +37,6 @@ commands:
   core-down:
     usage: Stop the core containers
     cmd: docker-compose stop    
-
+  bash:
+    usage: Start a container and login to it using bash
+    cmd: ahoy ros bash
