@@ -24,13 +24,13 @@ apt-get install ros-indigo-velodyne &&
 rosrun velodyne_pointcloud cloud_node &
 ```
 
-## 3. Start rviz
+## 3. Start roscore and rviz
 
 In order to view a bag file, you should first start rviz.
 
-`rosrun rviz rviz default.rvizi &`
+`roscore & rosrun rviz rviz default.rviz &`
 
-`default.rviz` should be setup with the proper topics to show the lidar data and the video.
+`default.rviz` should already be setup for you with the proper topics to show the LIDAR data and the video.
 
 ## 4. Play a bag file with rosbag
 
