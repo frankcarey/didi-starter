@@ -16,6 +16,11 @@ commands:
       --network="didi-net" \
       ros:nvidia \
       "$@"
+  bash:
+    usage: Start a container and login to it using bash
+    cmd: ahoy ros bash
+
+  # ROS COMMANDS
   rviz:
     usage: ROS visualization tool
     cmd: ahoy ros rosrun rviz rviz -d default.rviz
@@ -25,18 +30,24 @@ commands:
   rosbag:
     usage: rosbag command, used to store or play messages in bags
     cmd: ahoy ros rosbag "$@"
+
+
+  # UTILITY COMMANDS
   network-up:
     usage: Create the docker network 'didi-net'
     cmd: docker network create -d bridge didi-net
   network-down:
     usage: Delete the docker network 'didi-net'
     cmd: docker network rm didi-net
+  x-up:
+    usage: Enable Xserver to accept connections from docker.
+    cmd: xhost +local:root
+  x-down:
+    usage: Disable Xserver listening from docker.
+    cmd: xhost -local:root
   core-up:
     usage: Bring up the core containers
     cmd: docker-compose up -d
   core-down:
     usage: Stop the core containers
     cmd: docker-compose stop    
-  bash:
-    usage: Start a container and login to it using bash
-    cmd: ahoy ros bash
