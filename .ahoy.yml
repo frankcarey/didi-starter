@@ -16,6 +16,19 @@ commands:
       --network="didi-net" \
       ros:nvidia \
       "$@"
+  ros-d:
+    usage: (daemonized) Run a command in a ros gpu and GUI support
+    cmd: | 
+      nvidia-docker run -d --rm \
+      --volume=/dev/dri \
+      --env="DISPLAY"  \
+      --env="ROS_MASTER_URI=http://master:11311"  \
+      --env="QT_X11_NO_MITSHM=1" \
+      --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+      --volume=`pwd`:/src \
+      --network="didi-net" \
+      ros:nvidia \
+      "$@"
   bash:
     usage: Start a container and login to it using bash
     cmd: ahoy ros bash
@@ -23,10 +36,10 @@ commands:
   # ROS COMMANDS
   rviz:
     usage: ROS visualization tool
-    cmd: ahoy ros rosrun rviz rviz -d default.rviz
+    cmd: ahoy ros-d rosrun rviz rviz -d default.rviz
   rqt_bag:
     usage: ROS bag visualizer
-    cmd: ahoy ros rqt_bag
+    cmd: ahoy ros-d rqt_bag
   rosbag:
     usage: rosbag command, used to store or play messages in bags
     cmd: ahoy ros rosbag "$@"
