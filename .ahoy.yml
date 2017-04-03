@@ -9,16 +9,32 @@ commands:
       nvidia-docker run -it --rm \
       --volume=/dev/dri \
       --env="DISPLAY"  \
+      --env="ROS_MASTER_URI=http://master:11311"  \
       --env="QT_X11_NO_MITSHM=1" \
       --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
       --volume=`pwd`:/src \
+      --network="didi-net" \
       ros:nvidia \
-      bash -c "$@"
+      "$@"
   rviz:
     usage: ROS visualization tool
-    cmd: ahoy ros "roscore & rosrun rviz rviz"
+    cmd: ahoy ros rosrun rviz rviz -d default.rviz
   rqt_bag:
     usage: ROS bag visualizer
-    cmd: ahoy ros "roscore & rqt_bag"
-      
+    cmd: ahoy ros rqt_bag
+  rosbag:
+    usage: rosbag command, used to store or play messages in bags
+    cmd: ahoy ros rosbag "$@"
+  network-up:
+    usage: Create the docker network 'didi-net'
+    cmd: docker network create -d bridge didi-net
+  network-down:
+    usage: Delete the docker network 'didi-net'
+    cmd: docker network rm didi-net
+  core-up:
+    usage: Bring up the core containers
+    cmd: docker-compose up -d
+  core-down:
+    usage: Stop the core containers
+    cmd: docker-compose stop    
 

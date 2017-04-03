@@ -2,6 +2,14 @@ version: '2'
 services:
   master:
     image: ros:indigo-ros-base
-    container_name: master
-    command:
-      - roscore
+    hostname: master
+    command: [roscore]
+  cloud-node:
+    image: ros:nvidia
+    command: [rosrun, velodyne_pointcloud, cloud_node]
+    environment:
+      ROS_MASTER_URI: http://master:11311
+networks:
+  default:
+    external:
+      name: didi-net
