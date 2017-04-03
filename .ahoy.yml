@@ -1,6 +1,7 @@
 ahoyapi: v2
 commands:
-  build-gui:
+  build:
+    usage: Build the ros:nvidia docker image that 'ahoy ros' uses.
     cmd: docker build -t ros:nvidia .
   ros:
     usage: Run the full ROS desktop container with gpu and GUI support
