@@ -6,6 +6,13 @@ ROS can store messages in a "bag" file which can be played back, basically resen
 
 Make sure your data is in the ./data folder.
 
+## 0. Build the ros:nvidia image
+
+This uses docker to build the image we need for the next steps.
+
+`ahoy build`
+
+
 ## 1. Start a ros docker container
 
 We start it with `bash` so that we can start multiple programs at the same time. (TODO: Make this easier)
@@ -14,13 +21,11 @@ We start it with `bash` so that we can start multiple programs at the same time.
 
 All the following commands will be typed inside the container.
 
-## 2. Install velodyne stack and start the pointcloud node
+## 2. Start the velodyne pointcloud node
 
-TODO: Add these things to the Dockerfile
+Note: redo step 0 above if you built it before April 4th. (it's been updated to simplify this step)
 
 ```
-apt-get update &&
-apt-get install ros-indigo-velodyne &&
 rosrun velodyne_pointcloud cloud_node &
 ```
 
